@@ -17,7 +17,7 @@ struct ContentView: View {
                 VStack {
                     Text(viewStore.state.sceneStates.count, format: .number)
                     ForEachStore(store.scope(state: \.sceneStates, action: AppReducer.Action.forEachAction)) { store in
-                        WithViewStore(store) { viewStore in
+                        WithViewStore(store.actionless) { viewStore in
                             if viewStore.id == sceneID {
                                 VStack {
                                     Text(sceneID.uuidString)
