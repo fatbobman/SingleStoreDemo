@@ -29,7 +29,7 @@ struct AppReducer: ReducerProtocol {
                 }
             case let .deleteScene(id):
                 state.sceneStates.remove(id: id)
-            default:
+            case .sceneAction:
                 break
             }
             return .none
