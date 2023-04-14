@@ -15,12 +15,12 @@ struct ContentView: View {
         VStack {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 VStack {
-                    Text(viewStore.state.sceneStates.count, format: .number)
+                    Text(viewStore.state.sceneStates.count, format: .number) // SceneState 的数量
                     ForEachStore(store.scope(state: \.sceneStates, action: AppReducer.Action.forEachAction)) { store in
                         WithViewStore(store.actionless) { viewStore in
                             if viewStore.id == sceneID {
                                 VStack {
-                                    Text(sceneID.uuidString)
+                                    Text(sceneID.uuidString) // 当前的 SceneID
                                     TabContainer(store: store)
                                 }
                             }
