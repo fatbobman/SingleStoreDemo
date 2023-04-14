@@ -10,31 +10,25 @@ import SwiftUI
 
 struct ContentView: View {
     let store: StoreOf<AppReducer>
-    @State var sceneID: UUID?
+    @State var sceneID: UUID = .init()
     var body: some View {
         VStack {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 VStack {
                     Text(viewStore.state.sceneStates.count, format: .number)
-                    IfLetStore(store.scope(state: \.sceneStates[id: sceneID ?? UUID()], action: AppReducer.Action.sceneAction)) { store in
+                    IfLetStore(store.scope(state: \.sceneStates[id: sceneID], action: AppReducer.Action.sceneAction)) { store in
                         VStack {
-                            Text(sceneID?.uuidString ?? "")
+                            Text(sceneID.uuidString)
                             TabContainer(store: store)
                         }
-                    } else: {
-                        Color.clear
                     }
                 }
                 .onAppear {
                     sceneID = UUID()
-                    if let sceneID {
-                        viewStore.send(.createNewScene(sceneID))
-                    }
+                    viewStore.send(.createNewScene(sceneID))
                 }
                 .onDisappear {
-                    if let sceneID {
-                        viewStore.send(.deleteScene(sceneID))
-                    }
+                    viewStore.send(.deleteScene(sceneID))
                 }
             }
         }
