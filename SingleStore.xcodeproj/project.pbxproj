@@ -11,6 +11,10 @@
 		76DEF73B29E9433500FF1D96 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEF73A29E9433500FF1D96 /* ContentView.swift */; };
 		76DEF73D29E9433600FF1D96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76DEF73C29E9433600FF1D96 /* Assets.xcassets */; };
 		76DEF74029E9433600FF1D96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76DEF73F29E9433600FF1D96 /* Preview Assets.xcassets */; };
+		76DEF75129E9474300FF1D96 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 76DEF75029E9474300FF1D96 /* ComposableArchitecture */; };
+		76DEF75329E9476500FF1D96 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEF75229E9476500FF1D96 /* AppReducer.swift */; };
+		76DEF75529E9476D00FF1D96 /* SceneReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEF75429E9476D00FF1D96 /* SceneReducer.swift */; };
+		76DEF75729E94CF400FF1D96 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEF75629E94CF400FF1D96 /* TabContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		76DEF73A29E9433500FF1D96 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		76DEF73C29E9433600FF1D96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76DEF73F29E9433600FF1D96 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		76DEF75229E9476500FF1D96 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		76DEF75429E9476D00FF1D96 /* SceneReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneReducer.swift; sourceTree = "<group>"; };
+		76DEF75629E94CF400FF1D96 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76DEF75129E9474300FF1D96 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,8 +61,11 @@
 			children = (
 				76DEF73829E9433500FF1D96 /* SingleStoreApp.swift */,
 				76DEF73A29E9433500FF1D96 /* ContentView.swift */,
+				76DEF75229E9476500FF1D96 /* AppReducer.swift */,
+				76DEF75429E9476D00FF1D96 /* SceneReducer.swift */,
 				76DEF73C29E9433600FF1D96 /* Assets.xcassets */,
 				76DEF73E29E9433600FF1D96 /* Preview Content */,
+				76DEF75629E94CF400FF1D96 /* TabContainer.swift */,
 			);
 			path = SingleStore;
 			sourceTree = "<group>";
@@ -83,6 +94,9 @@
 			dependencies = (
 			);
 			name = SingleStore;
+			packageProductDependencies = (
+				76DEF75029E9474300FF1D96 /* ComposableArchitecture */,
+			);
 			productName = SingleStore;
 			productReference = 76DEF73529E9433500FF1D96 /* SingleStore.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 76DEF72C29E9433500FF1D96;
+			packageReferences = (
+				76DEF74F29E9474300FF1D96 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 76DEF73629E9433500FF1D96 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76DEF75729E94CF400FF1D96 /* TabContainer.swift in Sources */,
 				76DEF73B29E9433500FF1D96 /* ContentView.swift in Sources */,
 				76DEF73929E9433500FF1D96 /* SingleStoreApp.swift in Sources */,
+				76DEF75329E9476500FF1D96 /* AppReducer.swift in Sources */,
+				76DEF75529E9476D00FF1D96 /* SceneReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +302,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatbobman.SingleStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,6 +334,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatbobman.SingleStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,6 +365,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76DEF74F29E9474300FF1D96 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.52.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76DEF75029E9474300FF1D96 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76DEF74F29E9474300FF1D96 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76DEF72D29E9433500FF1D96 /* Project object */;
 }

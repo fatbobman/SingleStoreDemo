@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct SingleStoreApp: App {
+    let store: StoreOf<AppReducer> = .init(initialState: .init(), reducer: AppReducer())
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: store)
         }
     }
 }
