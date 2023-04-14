@@ -5,20 +5,27 @@
 //  Created by Yang Xu on 2023/4/14.
 //
 
+import ComposableArchitecture
 import Foundation
 import SwiftUI
-import ComposableArchitecture
 
-struct TabContainer:View {
-    let store:StoreOf<SceneReducer>
+struct TabContainer: View {
+    let store: StoreOf<SceneReducer>
     var body: some View {
-        WithViewStore(store,observe: {$0}){ viewStore in
-            TabView(selection: viewStore.binding(get: \.tabSelection, send: {.updateTabSelection($0)})){
-                ForEach(SceneReducer.Tab.allCases){ tab in
-                    Text(tab.rawValue)
-                        .font(.title)
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            let _ = print("update")
+            TabView(selection: viewStore.binding(get: \.tabSelection, send: {
+                print($0,"$$")
+                return .updateTabSelection($0)
+            })) {
+                ForEach(SceneReducer.Tab.allCases) { tab in
+                    tab.color
+                        .overlay(
+                            Text(tab.rawValue.uppercased())
+                                .font(.title)
+                        )
                         .tag(tab)
-                        .tabItem{
+                        .tabItem {
                             Text(tab.rawValue)
                         }
                 }

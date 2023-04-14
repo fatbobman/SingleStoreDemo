@@ -16,13 +16,18 @@ struct ContentView: View {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 VStack {
                     Text(viewStore.state.sceneStates.count, format: .number)
-                    IfLetStore(store.scope(state: \.sceneStates[id: sceneID], action: AppReducer.Action.sceneAction)) { store in
-                        VStack {
-                            Text(sceneID.uuidString)
-                            TabContainer(store: store)
+                    ForEachStore(store.scope(state: \.sceneStates, action: AppReducer.Action.forEachAction)) { store in
+                        WithViewStore(store) { viewStore in
+                            if viewStore.id == sceneID {
+                                VStack {
+                                    Text(sceneID.uuidString)
+                                    TabContainer(store: store)
+                                }
+                            }
                         }
                     }
                 }
+                .id(sceneID)
                 .onAppear {
                     sceneID = UUID()
                     viewStore.send(.createNewScene(sceneID))

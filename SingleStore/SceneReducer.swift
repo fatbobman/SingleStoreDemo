@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import Foundation
+import SwiftUI
 
 struct SceneReducer: ReducerProtocol {
     struct State: Equatable, Identifiable {
@@ -33,6 +34,19 @@ struct SceneReducer: ReducerProtocol {
                 state.tabSelection = tab
             }
             return .none
+        }
+    }
+}
+
+extension SceneReducer.Tab {
+    var color: Color {
+        switch self {
+        case .tab1:
+            return .cyan.opacity(0.6)
+        case .tab2:
+            return .yellow.opacity(0.6)
+        case .tab3:
+            return .green.opacity(0.6)
         }
     }
 }

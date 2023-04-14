@@ -17,7 +17,7 @@ struct AppReducer: ReducerProtocol {
     enum Action: Equatable {
         case createNewScene(UUID)
         case deleteScene(UUID)
-        case sceneAction(SceneReducer.Action)
+        case forEachAction(id: UUID, action: SceneReducer.Action)
     }
 
     var body: some ReducerProtocol<State, Action> {
@@ -29,10 +29,13 @@ struct AppReducer: ReducerProtocol {
                 }
             case let .deleteScene(id):
                 state.sceneStates.remove(id: id)
-            case .sceneAction:
+            default:
                 break
             }
             return .none
+        }
+        .forEach(\.sceneStates, action: /Action.forEachAction) {
+            SceneReducer()
         }
     }
 }

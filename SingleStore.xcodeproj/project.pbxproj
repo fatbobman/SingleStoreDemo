@@ -63,9 +63,9 @@
 				76DEF73A29E9433500FF1D96 /* ContentView.swift */,
 				76DEF75229E9476500FF1D96 /* AppReducer.swift */,
 				76DEF75429E9476D00FF1D96 /* SceneReducer.swift */,
+				76DEF75629E94CF400FF1D96 /* TabContainer.swift */,
 				76DEF73C29E9433600FF1D96 /* Assets.xcassets */,
 				76DEF73E29E9433600FF1D96 /* Preview Content */,
-				76DEF75629E94CF400FF1D96 /* TabContainer.swift */,
 			);
 			path = SingleStore;
 			sourceTree = "<group>";
