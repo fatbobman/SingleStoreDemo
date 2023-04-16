@@ -15,8 +15,8 @@ struct ContentView: View {
         VStack {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 VStack {
-                    sceneStateCount(viewStore.sceneStates.count) // SceneState 的数量
                     appHits(viewStore.state.hitCount)
+                    sceneStateCount(viewStore.sceneStates.count) // SceneState 的数量
                     ForEachStore(store.scope(state: \.sceneStates, action: AppReducer.Action.forEachAction)) { store in
                         WithViewStore(store.actionless) { viewStore in
                             if viewStore.id == sceneID {
@@ -57,8 +57,12 @@ extension ContentView {
     }
     
     func appHits(_ count:Int) -> some View {
-        HStack {
-            Text("Hits: \(count)")
+        HStack(alignment: .firstTextBaseline) {
+            Text("Hits:")
+            Text(count,format:.number)
+                .contentTransition(.numericText())
+                .font(.title)
+                .foregroundStyle(.red.gradient)
         }
     }
 }
