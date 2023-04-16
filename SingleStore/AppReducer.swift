@@ -11,7 +11,7 @@ import Foundation
 struct AppReducer: ReducerProtocol {
     struct State: Equatable {
         var sceneStates: IdentifiedArrayOf<SceneReducer.State> = .init()
-        var purchased = false
+        var hitCount = 0
     }
 
     enum Action: Equatable {
@@ -29,6 +29,8 @@ struct AppReducer: ReducerProtocol {
                 }
             case let .deleteScene(id):
                 state.sceneStates.remove(id: id)
+            case .forEachAction(id: _, action: .hitButtonTapped):
+                state.hitCount += 1
             default:
                 break
             }

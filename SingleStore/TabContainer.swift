@@ -13,23 +13,35 @@ struct TabContainer: View {
     let store: StoreOf<SceneReducer>
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            let _ = print("update")
-            TabView(selection: viewStore.binding(get: \.tabSelection, send: {
-                print($0,"$$")
-                return .updateTabSelection($0)
-            })) {
+            TabView(selection: viewStore.binding(get: \.tabSelection, send: { .updateTabSelection($0) })) {
                 ForEach(SceneReducer.Tab.allCases) { tab in
                     tab.color
                         .overlay(
-                            Text(tab.rawValue.uppercased())
-                                .font(.title)
+                            SubView(title: tab.rawValue, action: { viewStore.send(.hitButtonTapped, animation: .default) })
                         )
                         .tag(tab)
                         .tabItem {
-                            Text(tab.rawValue)
+                            Text(tab.rawValue.uppercased())
                         }
                 }
             }
+        }
+    }
+}
+
+struct SubView: View {
+    let title: String
+    let action: () -> Void
+    var body: some View {
+        VStack {
+            Text(title.uppercased())
+                .font(.title)
+            Button {
+                action()
+            } label: {
+                Text("Hit Me".uppercased())
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }

@@ -25,6 +25,7 @@ struct SceneReducer: ReducerProtocol {
 
     enum Action: Equatable {
         case updateTabSelection(Tab)
+        case hitButtonTapped
     }
 
     var body: some ReducerProtocol<State, Action> {
@@ -32,6 +33,8 @@ struct SceneReducer: ReducerProtocol {
             switch action {
             case let .updateTabSelection(tab):
                 state.tabSelection = tab
+            case .hitButtonTapped:
+                break
             }
             return .none
         }
